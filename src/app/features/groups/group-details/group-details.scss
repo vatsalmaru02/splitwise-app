@@ -1,0 +1,49 @@
+.container {
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.group-card,
+.members-card,
+.expenses-card {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.members {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.member-chip {
+  padding: 0.8rem 1.6rem;
+  border-radius: 2rem;
+  background: #f5f5f5;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.2rem 0;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+.empty {
+  margin-top: 2rem;
+}

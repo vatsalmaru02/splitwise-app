@@ -1,0 +1,30 @@
+.container {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.group-grid {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.group-card {
+  padding: 1.6rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.empty-card {
+  padding: 3rem;
+  text-align: center;
+}
