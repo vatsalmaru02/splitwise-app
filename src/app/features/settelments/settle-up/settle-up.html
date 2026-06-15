@@ -1,1 +1,61 @@
-<p>settle-up works!</p>
+<mat-card class="card">
+  <h1>Settle Up</h1>
+
+  @if (balances.length === 0) {
+    <p class="empty-state">No balances found</p>
+  }
+
+  @for (balance of balances; track $index) {
+    <mat-card class="balance-card">
+      <div class="balance-content">
+        <div class="users">
+          <span class="from-user">
+            {{ balance.fromUserId }}
+          </span>
+          <span class="owes"> owes </span>
+          <span class="to-user">
+            {{ balance.toUserId }}
+          </span>
+        </div>
+        <div class="amount">₹{{ balance.amount | number: '1.2-2' }}</div>
+      </div>
+    </mat-card>
+  }
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">From User</mat-label>
+
+      <input matInput formControlName="fromUserId" class="form-input" />
+
+      @if (form.get('fromUserId')?.hasError('required') && form.get('fromUserId')?.touched) {
+        <mat-error>From User is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">To User</mat-label>
+
+      <input matInput formControlName="toUserId" class="form-input" />
+
+      @if (form.get('toUserId')?.hasError('required') && form.get('toUserId')?.touched) {
+        <mat-error>To User is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">Amount</mat-label>
+
+      <input matInput type="number" formControlName="amount" class="form-input" />
+
+      @if (form.get('amount')?.hasError('required') && form.get('amount')?.touched) {
+        <mat-error>Amount is required</mat-error>
+      }
+
+      @if (form.get('amount')?.hasError('min') && form.get('amount')?.touched) {
+        <mat-error>Amount must be greater than 0</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="button" (click)="settle()">Settle</button>
+  </form>
+</mat-card>

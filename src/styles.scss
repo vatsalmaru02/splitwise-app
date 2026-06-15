@@ -7,7 +7,7 @@
 
 html {
   height: 100%;
-
+font-size: 62.5%;
   @include mat.theme(
     (
       color: (
@@ -36,6 +36,7 @@ body {
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
+   background: #f8fafc;
 }
 /* You can add global styles to this file, and also import other style files */
 
@@ -45,6 +46,6 @@ body {
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
+mat-card {
+  border-radius: 2rem !important;
 }

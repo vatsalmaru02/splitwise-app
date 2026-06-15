@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { Dashboard } from './features/dashboard/dashboard';
+import { DashboardComponent } from './features/dashboard/dashboard';
 import { GroupList } from './features/groups/group-list/group-list';
 import { GroupForm } from './features/groups/group-form/group-form';
 import { GroupDetails } from './features/groups/group-details/group-details';
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: Dashboard,
+    component: DashboardComponent,
   },
   {
     path: 'groups',

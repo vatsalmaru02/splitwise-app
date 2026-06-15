@@ -3,9 +3,11 @@
 
   <form [formGroup]="form">
     <mat-form-field appearance="outline">
-      <mat-label>Group Name</mat-label>
-
-      <input matInput formControlName="name" />
+      <mat-label class="form-label">Group Name</mat-label>
+      <input matInput formControlName="name" class="form-input" />
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+        <mat-error>Group name is required</mat-error>
+      }
     </mat-form-field>
 
     <div class="members-section">
@@ -15,9 +17,13 @@
         @for (member of members.controls; track $index) {
           <div class="member-row">
             <mat-form-field appearance="outline">
-              <mat-label>Member Name</mat-label>
+              <mat-label class="form-label">Member Name</mat-label>
 
-              <input matInput [formControlName]="$index" />
+              <input matInput [formControlName]="$index" class="form-input" />
+
+              @if (members.at($index).hasError('required') && members.at($index).touched) {
+                <mat-error>Member name is required</mat-error>
+              }
             </mat-form-field>
 
             <button mat-button color="warn" type="button" (click)="removeMember($index)">

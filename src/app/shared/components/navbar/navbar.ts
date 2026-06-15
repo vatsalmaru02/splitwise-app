@@ -3,11 +3,13 @@ import { RouterModule } from '@angular/router';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, MatToolbarModule, MatButtonModule],
+  imports: [RouterModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule ],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })

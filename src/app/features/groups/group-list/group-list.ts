@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent} from '../../../shared/components/confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-group-list',
@@ -21,6 +23,7 @@ export class GroupList implements OnInit {
     private groupService: GroupService,
     private router: Router,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -36,14 +39,21 @@ export class GroupList implements OnInit {
   }
 
   deleteGroup(id: string) {
-    const confirmed = confirm('Are you sure you want to delete this group?');
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '32rem',
+      data: {
+        title: 'Delete Group',
+        message: 'Are you sure you want to delete this group and all related expenses?',
+      },
+    });
 
-    if (!confirmed) {
-      return;
-    }
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (!confirmed) {
+        return;
+      }
 
-    this.groupService.deleteGroup(id);
-    this.loadGroups();
-    this.snackBar.open('Group deleted successfully', 'Close', { duration: 3000 });
+      this.groupService.deleteGroup(id);
+      this.loadGroups();
+    });
   }
 }

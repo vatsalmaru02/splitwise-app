@@ -43,7 +43,7 @@
           </p>
         </div>
 
-        <div class="amount">₹ {{ expense.amount }}</div>
+        <div class="amount">₹{{ expense.amount | number: '1.2-2' }}</div>
       </div>
     }
   </mat-card>

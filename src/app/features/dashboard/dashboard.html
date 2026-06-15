@@ -1,6 +1,11 @@
 <div class="container">
   <h1>Dashboard</h1>
 
+  @if (totalGroups === 0 && totalExpenses === 0 && totalSettlements === 0) {
+    <mat-card class="empty-card">
+      No data available. Create a group to get started.
+    </mat-card>
+  } @else {
     <div class="stats-grid">
       <mat-card class="stat-card">
         <h2>{{ totalGroups }}</h2>
@@ -18,8 +23,9 @@
       </mat-card>
 
       <mat-card class="stat-card">
-        <h2>$0.00</h2>
+        <h2>₹{{ totalOutstanding | number:'1.2-2' }}</h2>
         <p>Outstanding Balance</p>
       </mat-card>
     </div>
+  }
 </div>

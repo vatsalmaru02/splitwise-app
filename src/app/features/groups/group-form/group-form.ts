@@ -48,9 +48,16 @@ export class GroupForm implements OnInit {
   }
 
   addMember() {
+    this.members.markAllAsTouched();
+
+    const hasEmptyMember = this.members.controls.some((control) => !control.value?.trim());
+
+    if (hasEmptyMember) {
+      return;
+    }
+
     this.members.push(this.fb.control('', Validators.required));
   }
-
   removeMember(index: number) {
     this.members.removeAt(index);
   }

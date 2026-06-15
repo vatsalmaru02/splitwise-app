@@ -1,14 +1,93 @@
-mat-toolbar {
+.navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  height: 7rem;
+  padding: 0 2.4rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(1rem);
+  border-bottom: 0.1rem solid #e5e7eb;
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
 .spacer {
   flex: 1;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.desktop-nav a {
+  height: 4rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.drawer-container {
+  min-height: calc(100vh - 7rem);
+}
+
+.mobile-drawer {
+  width: 28rem;
+  padding: 2rem;
+}
+
+.drawer-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 0.1rem solid #e5e7eb;
+}
+
+.drawer-header h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.drawer-nav a {
+  justify-content: flex-start;
+  height: 5rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+}
+
+.drawer-nav a:hover {
+  background: #f3f4f6;
+}
+
+
+@media (max-width: 48em) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+    margin-right: 1rem;
+  }
+
+  .navbar {
+    padding: 0 1.6rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
 }

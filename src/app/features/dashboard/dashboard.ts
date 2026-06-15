@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
+
 import { GroupService } from '../../core/services/group.service';
 import { ExpenseService } from '../../core/services/expense.service';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [CommonModule, MatCardModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
-export class Dashboard implements OnInit {
+export class DashboardComponent implements OnInit {
   totalGroups = 0;
   totalExpenses = 0;
   totalSettlements = 0;
@@ -22,12 +25,14 @@ export class Dashboard implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadStates();
+    this.loadStats();
   }
 
-  loadStates() {
+  loadStats() {
     this.totalGroups = this.groupService.getGroups().length;
     this.totalExpenses = this.expenseService.getExpenses().length;
     this.totalSettlements = this.expenseService.getSettlements().length;
+    const balances = this.expenseService.calculateBalances();
+    this.totalOutstanding = balances.reduce((sum, balance) => sum + balance.amount, 0);
   }
 }

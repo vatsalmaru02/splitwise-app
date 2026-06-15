@@ -1,15 +1,38 @@
-<mat-toolbar>
-  <span class="logo"> SplitWise </span>
+<mat-toolbar class="navbar">
+  <button mat-icon-button class="menu-btn" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="logo">SplitWise</span>
 
   <span class="spacer"></span>
 
-  <a mat-button routerLink="/dashboard"> Dashboard </a>
-
-  <a mat-button routerLink="/groups"> Groups </a>
-
-  <a mat-button routerLink="/expenses"> Expenses </a>
-
-  <a mat-button routerLink="/balances"> Balances </a>
-
-  <a mat-button routerLink="/settle-up"> Settle Up </a>
+  <div class="desktop-nav">
+    <a mat-button routerLink="/dashboard">Dashboard</a>
+    <a mat-button routerLink="/groups">Groups</a>
+    <a mat-button routerLink="/expenses">Expenses</a>
+    <a mat-button routerLink="/balances">Balances</a>
+    <a mat-button routerLink="/settle-up">Settle Up</a>
+  </div>
 </mat-toolbar>
+
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer mode="over" position="start" class="mobile-drawer">
+
+    <nav class="drawer-nav">
+      <a mat-button routerLink="/dashboard" (click)="drawer.close()"> Dashboard </a>
+
+      <a mat-button routerLink="/groups" (click)="drawer.close()"> Groups </a>
+
+      <a mat-button routerLink="/expenses" (click)="drawer.close()"> Expenses </a>
+
+      <a mat-button routerLink="/balances" (click)="drawer.close()"> Balances </a>
+
+      <a mat-button routerLink="/settle-up" (click)="drawer.close()"> Settle Up </a>
+    </nav>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

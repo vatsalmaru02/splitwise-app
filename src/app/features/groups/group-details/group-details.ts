@@ -5,12 +5,15 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialog } from '@angular/material/dialog';
+
 
 import { Group } from '../../../core/models/group.model';
 import { Expense } from '../../../core/models/expense.model';
 
 import { GroupService } from '../../../core/services/group.service';
 import { ExpenseService } from '../../../core/services/expense.service';
+import { ConfirmDialogComponent } from '../../../shared/components/confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-group-details',
@@ -28,6 +31,7 @@ export class GroupDetails implements OnInit {
     private router: Router,
     private groupService: GroupService,
     private expenseService: ExpenseService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
