@@ -1,0 +1,91 @@
+<mat-card class="card">
+  <h1 class="title">Add Expense</h1>
+
+  <form [formGroup]="form" class="expense-form">
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">Description</mat-label>
+      <input matInput formControlName="description" class="form-input" />
+      @if (form.get('description')?.hasError('required') && form.get('description')?.touched) {
+        <mat-error class="error">Description is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">Amount</mat-label>
+      <input matInput type="number" formControlName="amount" class="form-input" />
+      @if (form.get('amount')?.hasError('required') && form.get('amount')?.touched) {
+        <mat-error class="error">Amount is required</mat-error>
+      }
+      @if (form.get('amount')?.hasError('min') && form.get('amount')?.touched) {
+        <mat-error class="error">Amount must be greater than 0</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">Paid By</mat-label>
+
+      <mat-select formControlName="paidBy">
+        @for (member of group.members; track member) {
+          <mat-option [value]="member">
+            {{ member }}
+          </mat-option>
+        }
+      </mat-select>
+
+      @if (form.get('paidBy')?.hasError('required') && form.get('paidBy')?.touched) {
+        <mat-error class="error">Please select who paid</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">Participants</mat-label>
+
+      <mat-select multiple formControlName="participants">
+        @for (member of group.members; track member) {
+          <mat-option [value]="member">
+            {{ member }}
+          </mat-option>
+        }
+      </mat-select>
+
+      @if (form.get('participants')?.hasError('required') && form.get('participants')?.touched) {
+        <mat-error class="error">Select at least one participant</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="split-section">
+      <label class="form-label"> Split Type </label>
+
+      @if (form.get('splitType')?.value === 'custom') {
+        <div class="custom-splits">
+          <h3>Custom Amounts</h3>
+
+          @for (split of customSplits; track split.user) {
+            <mat-form-field appearance="outline">
+              <mat-label>
+                {{ split.user }}
+              </mat-label>
+
+              <input
+                matInput
+                type="number"
+                [value]="split.amount"
+                (input)="updateCustomAmount(split.user, $any($event.target).value)"
+                class="form-input"
+              />
+            </mat-form-field>
+          }
+        </div>
+      }
+
+      <mat-radio-group formControlName="splitType">
+        <mat-radio-button value="even"> Even </mat-radio-button>
+        <mat-radio-button value="custom"> Custom </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <button class="btn" mat-raised-button color="primary" type="button" (click)="saveExpense()">
+      Save Expense
+    </button>
+  </form>
+</mat-card>

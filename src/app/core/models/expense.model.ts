@@ -1,3 +1,5 @@
+import { CustomSplit } from "./custom-split.model";
+
 export interface Expense {
   id: string;
   groupId: string;
@@ -6,9 +8,6 @@ export interface Expense {
   paidBy: string;
   splitType: 'even' | 'custom';
   participants: string[];
-  customSplits?: {
-    userId: string;
-    amount: number;
-  }[];
+  customSplits?: CustomSplit[];
   createdAt: string;
 }

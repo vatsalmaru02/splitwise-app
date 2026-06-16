@@ -1,0 +1,162 @@
+.card {
+  max-width: 80rem;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: none;
+  border-radius: 2rem;
+  background: #ffffff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  margin-bottom: 3rem;
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.empty-state {
+  padding: 3rem;
+  text-align: center;
+  border-radius: 1.6rem;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.balance-card {
+  margin-bottom: 1.6rem;
+  border: none;
+  border-radius: 1.6rem;
+  background: #ffffff;
+  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.1);
+}
+
+.balance-content {
+  padding: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.users {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.from-user {
+  padding: 0.8rem 1.4rem;
+  border-radius: 999rem;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.to-user {
+  padding: 0.8rem 1.4rem;
+  border-radius: 999rem;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.owes {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.amount {
+  flex-shrink: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.settle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3rem;
+
+  .form-label {
+    font-size: 1.4rem;
+    color: #374151;
+  }
+
+  .form-input {
+    font-size: 1.6rem;
+    color: #111827;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.btn[type='button'] {
+  align-self: flex-end;
+  min-width: 18rem;
+  height: 5rem;
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.error {
+  font-size: 1.4rem;
+  color: #ef4444;
+}
+
+@media (max-width: 76.8em) {
+  .card {
+    margin: 2rem;
+    padding: 2.4rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 48em) {
+  .card {
+    margin: 1.6rem;
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .balance-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .amount {
+    font-size: 1.8rem;
+  }
+
+  .btn[type='button'] {
+    width: 100%;
+    align-self: stretch;
+  }
+}

@@ -1,0 +1,137 @@
+.card {
+  max-width: 80rem;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: none;
+  border-radius: 2rem;
+  background: #ffffff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  margin-bottom: 3rem;
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.split-section {
+  padding: 2rem;
+  border-radius: 1.6rem;
+  background: #f8fafc;
+  border: 0.1rem solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.form-label {
+  font-size: 1.4rem;
+  color: #374151;
+}
+
+.form-input {
+  font-size: 1.8rem;
+  color: #111827;
+}
+
+mat-radio-group {
+  display: flex;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.custom-splits {
+  padding: 2rem;
+  border-radius: 1.4rem;
+  background: #ffffff;
+  border: 0.1rem solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.custom-splits h3 {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.btn[type='button'][mat-raised-button] {
+  align-self: flex-end;
+  min-width: 18rem;
+  height: 5rem;
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.custom-error {
+  margin: 0.8rem 0 0;
+  font-size: 1.6rem;
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+.error {
+  font-size: 1.4rem
+}
+
+@media (max-width: 76.8em) {
+  .card {
+    margin: 2rem;
+    padding: 2.4rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 48em) {
+  .card {
+    margin: 1.6rem;
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .split-section {
+    padding: 1.6rem;
+  }
+
+  .custom-splits {
+    padding: 1.6rem;
+  }
+
+  mat-radio-group {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .btn[type='button'][mat-raised-button] {
+    width: 100%;
+    align-self: stretch;
+  }
+}

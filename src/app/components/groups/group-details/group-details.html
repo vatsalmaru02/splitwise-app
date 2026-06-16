@@ -1,0 +1,67 @@
+<div class="container">
+  <mat-card class="group-card">
+    <div class="header">
+      <div>
+        <h1>{{ group.name }}</h1>
+        <p>{{ group.members.length }} Members</p>
+      </div>
+      <button mat-raised-button color="primary" (click)="addExpense()">Add Expense</button>
+    </div>
+  </mat-card>
+
+  <mat-card class="members-card">
+    @if (group.members.length === 0) {
+      <p class="empty">No members found.</p>
+    }
+    <mat-divider></mat-divider>
+    <div class="members">
+      @for (member of group.members; track member) {
+        <div class="member-chip">
+          {{ member }}
+        </div>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card class="expenses-card">
+    <h2>Expenses</h2>
+
+    <mat-divider></mat-divider>
+
+    @if (expenses.length === 0) {
+      <p class="empty">No expenses added yet.</p>
+    }
+
+    @for (expense of expenses; track expense.id) {
+      <div class="expense-item">
+        <div>
+          <h3>{{ expense.description }}</h3>
+          <p>
+            Paid By:
+            {{ expense.paidBy }}
+          </p>
+        </div>
+        <div class="amount">₹{{ expense.amount | number: '1.2-2' }}</div>
+      </div>
+    }
+
+    <mat-divider></mat-divider>
+
+    @if (balances.length === 0) {
+      <p class="empty">No balances found.</p>
+    }
+
+    @for (balance of balances; track $index) {
+      <div class="expense-item">
+        <div>
+          <p>
+            <strong>{{ balance.fromUserId }}</strong>
+            owes
+            <strong>{{ balance.toUserId }}</strong>
+          </p>
+        </div>
+        <div class="amount">₹{{ balance.amount | number: '1.2-2' }}</div>
+      </div>
+    }
+  </mat-card>
+</div>

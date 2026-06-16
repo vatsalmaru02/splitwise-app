@@ -1,6 +1,8 @@
+import { Settlement } from './../models/settlement.model';
+import { Expense } from './../models/expense.model';
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { share } from 'rxjs';
+import { Balance } from '../models/balance.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,13 +23,13 @@ export class ExpenseService {
 
   deleteExpense(id: string) {
     const data = this.storageService.getData();
-    data.expenses = data.expenses.filter((expense: any) => expense.id !== id);
+    data.expenses = data.expenses.filter((expense: Expense) => expense.id !== id);
     this.storageService.saveData(data);
   }
 
   getExpensesByGroup(groupId: string) {
     const data = this.storageService.getData();
-    return data.expenses.filter((expense: any) => expense.groupId === groupId);
+    return data.expenses.filter((expense: Expense) => expense.groupId === groupId);
   }
 
   addSettlement(settlement: any) {
@@ -43,9 +45,9 @@ export class ExpenseService {
   calculateBalances() {
     const expenses = this.getExpenses();
     const settlements = this.getSettlements();
-    const balances: any[] = [];
+    const balances: Balance[] = [];
 
-    expenses.forEach((expense: any) => {
+    expenses.forEach((expense: Expense) => {
       if (expense.splitType === 'even') {
         const share = Number((expense.amount / expense.participants.length).toFixed(2));
 
@@ -69,7 +71,7 @@ export class ExpenseService {
           }
         });
       } else {
-        expense.customSplits.forEach((split: any) => {
+        expense.customSplits?.forEach((split: any) => {
           if (split.user === expense.paidBy) {
             return;
           }
@@ -79,7 +81,7 @@ export class ExpenseService {
           );
 
           if (existingBalance) {
-            existingBalance.amount = Number((existingBalance.amount + share).toFixed(2));
+            existingBalance.amount = Number((existingBalance.amount + split.amount).toFixed(2));
           } else {
             balances.push({
               fromUserId: split.user,
@@ -90,7 +92,7 @@ export class ExpenseService {
         });
       }
     });
-    settlements.forEach((settlement: any) => {
+    settlements.forEach((settlement: Settlement) => {
       const balance = balances.find(
         (b) =>
           b.fromUserId?.trim().toLowerCase() === settlement.fromUserId?.trim().toLowerCase() &&

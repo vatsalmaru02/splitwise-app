@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from './features/dashboard/dashboard';
-import { GroupList } from './features/groups/group-list/group-list';
-import { GroupForm } from './features/groups/group-form/group-form';
-import { GroupDetails } from './features/groups/group-details/group-details';
-import { ExpenseList } from './features/expenses/expense-list/expense-list';
-import { ExpenseForm } from './features/expenses/expense-form/expense-form';
-import { Balances } from './features/balances/balances';
-import { SettleUp } from './features/settelments/settle-up/settle-up';
+import { DashboardComponent } from './components/dashboard/dashboard';
+import { GroupList } from './components/groups/group-list/group-list';
+import { GroupForm } from './components/groups/group-form/group-form';
+import { GroupDetails } from './components/groups/group-details/group-details';
+import { ExpenseList } from './components/expenses/expense-list/expense-list';
+import { ExpenseForm } from './components/expenses/expense-form/expense-form';
+import { Balances } from './components/balances/balances';
+import { SettleUp } from './components/settelments/settle-up/settle-up';
 
 export const routes: Routes = [
   {

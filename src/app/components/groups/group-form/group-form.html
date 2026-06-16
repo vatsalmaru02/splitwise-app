@@ -1,0 +1,39 @@
+<mat-card class="card">
+  <h1 class="title">Create Group</h1>
+
+  <form [formGroup]="form" class="group-form">
+    <mat-form-field appearance="outline">
+      <mat-label class="form-label">Group Name</mat-label>
+      <input matInput formControlName="name" class="form-input" />
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+        <mat-error class="error">Group name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="members-section">
+      <button mat-raised-button type="button" (click)="addMember()">Add Member</button>
+
+      <div formArrayName="members">
+        @for (member of members.controls; track $index) {
+          <div class="member-row">
+            <mat-form-field appearance="outline">
+              <mat-label class="form-label">Member Name</mat-label>
+
+              <input matInput [formControlName]="$index" class="form-input" />
+
+              @if (members.at($index).hasError('required') && members.at($index).touched) {
+                <mat-error class="error">Member name is required</mat-error>
+              }
+            </mat-form-field>
+
+            <button mat-button color="warn" type="button" (click)="removeMember($index)">
+              Remove
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="saveGroup()">Save Group</button>
+  </form>
+</mat-card>

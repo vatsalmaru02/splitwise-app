@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="title">Dashboard</h1>
+
+  @if (totalGroups === 0 && totalExpenses === 0 && totalSettlements === 0) {
+    <mat-card class="empty-card">
+      No data available. Create a group to get started.
+    </mat-card>
+  } @else {
+    <div class="stats-grid">
+      <mat-card class="stat-card" (click)="navigateToGroups()">
+        <h2 class="sub-title">{{ totalGroups }} </h2>
+        <p>Total Groups</p>
+      </mat-card>
+
+      <mat-card class="stat-card" (click)="navigateToExpenses()">
+        <h2 class="sub-title">{{ totalExpenses }}</h2>
+        <p>Total Expenses</p>
+      </mat-card>
+
+      <mat-card class="stat-card" (click)="navigateToSettleup()">
+        <h2 class="sub-title">{{ totalSettlements }}</h2>
+        <p>Total Settlements</p>
+      </mat-card>
+
+      <mat-card class="stat-card" (click)="navigateToBalance()">
+        <h2 class="sub-title">₹{{ totalOutstanding | number:'1.2-2' }}</h2>
+        <p>Outstanding Balance</p>
+      </mat-card>
+    </div>
+  }
+</div>
