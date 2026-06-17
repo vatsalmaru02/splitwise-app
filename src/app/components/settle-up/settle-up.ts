@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { ExpenseService } from '../../../core/services/expense.service';
+import { ExpenseService } from '../../core/services/expense.service';
 
 @Component({
   selector: 'app-settle-up',

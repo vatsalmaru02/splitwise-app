@@ -7,7 +7,7 @@ import { GroupDetails } from './components/groups/group-details/group-details';
 import { ExpenseList } from './components/expenses/expense-list/expense-list';
 import { ExpenseForm } from './components/expenses/expense-form/expense-form';
 import { Balances } from './components/balances/balances';
-import { SettleUp } from './components/settelments/settle-up/settle-up';
+import { SettleUp } from './components/settle-up/settle-up';
 
 export const routes: Routes = [
   {

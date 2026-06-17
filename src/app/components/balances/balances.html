@@ -2,52 +2,54 @@
   <h1 class="title">Balances</h1>
 
   @if (balances.length === 0) {
-    <mat-card class="empty-card">
-      No balances found
-    </mat-card>
+  <mat-card class="empty-card">
+    No balances found
+  </mat-card>
   }
 
   @for (balance of balances; track $index) {
-    <mat-card class="balance-card">
-      <div class="balance-content">
-        <div class="users">
-          <span class="from-user">
-            {{ balance.fromUserId }}
-          </span>
+  <mat-card class="balance-card">
+    <div class="balance-content">
+      <div class="users">
+        <span class="from-user">
+          {{ balance.fromUserId }}
+        </span>
 
-          <span class="arrow">
-            owes
-          </span>
+        <span class="arrow">
+          owes
+        </span>
 
-          <span class="to-user">
-            {{ balance.toUserId }}
-          </span>
-        </div>
-
-        <div class="amount">
-          ₹{{ balance.amount | number:'1.2-2' }}
-        </div>
+        <span class="to-user">
+          {{ balance.toUserId }}
+        </span>
       </div>
-    </mat-card>
+
+      <div class="amount">
+        ₹{{ balance.amount | number:'1.2-2' }}
+      </div>
+    </div>
+  </mat-card>
   }
 
   <h2 class="sub-title">Net Balances</h2>
 
-  @for (item of netBalances; track item.user) {
-    <mat-card class="net-card">
-      <div class="net-content">
-        <span class="user">
-          {{ item.user }}
-        </span>
+  @if (balances.length === 0) {
+  <mat-card class="empty-card">
+    No net balances found
+  </mat-card>
+  }
 
-        <span
-          class="net-amount"
-          [class.positive]="item.amount > 0"
-          [class.negative]="item.amount < 0"
-        >
-          ₹{{ item.amount | number:'1.2-2' }}
-        </span>
-      </div>
-    </mat-card>
+  @for (item of netBalances; track item.user) {
+  <mat-card class="net-card">
+    <div class="net-content">
+      <span class="user">
+        {{ item.user }}
+      </span>
+
+      <span class="net-amount" [class.positive]="item.amount > 0" [class.negative]="item.amount < 0">
+        ₹{{ item.amount | number:'1.2-2' }}
+      </span>
+    </div>
+  </mat-card>
   }
 </div>
